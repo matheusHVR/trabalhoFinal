@@ -1,0 +1,39 @@
+body {
+    background-color: aquamarine;
+    font-family: Arial, sans-serif;
+
+    display: flex; /* Usar flexbox para alinhar horizontalmente e verticalmente */
+    justify-content: center; /* Alinhar horizontalmente (no eixo X) */
+    align-items: center; /* Alinhar verticalmente (no eixo Y) */
+    min-height: 100vh;
+    }
+
+form {
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 3px 3px 5px #888888;
+    border: 2px solid aqua;
+    border-radius: 5px;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid black;
+  
+}
+
+.post-it {
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #ffcc00;
+    border: 2px solid #ff9900;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px #888888;
+    font-family: Arial, sans-serif;
+}
