@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controle de atividades</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>esse trabalho vai ficar muito top</h1>
+    <div>
+        <h1>Controle de atividades academicas</h1>
+        <form method="post" action="/controllers/usuario_controller.php" >
+            <label for="matricula">matricula:</label>
+            <input type="text" name="matricula"><br>
+            <label for="senha">senha</label>
+            <input type="password" name="senha"><br>
+            <a href="cadastro_usuario.html">Criar conta</a>
+            <input type="submit" value="enviar">
+        </form>
+    </div>
 </body>
 </html>
