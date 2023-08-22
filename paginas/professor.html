@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Professor</title>
+</head>
+<body>
+    <div id="cabecalho">
+        <h1>Controle de atividades</h1>
+    </div>
+    <div id="cadastro de diciplina">
+        <h3>Cadatro de diciplina</h3>
+        <form method="post">
+            <label for="codigo">Codigo</label>
+            <input type="text" name="codigo" id="codigo"><br>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome"><br>
+            <label for="curso">Curso</label>
+            <input type="text" name="curso" id="curso"><br>
+            <button onclick="">Cadastrar</button>
+        </form>
+    </div>
+    <div id="cadastro de atividades">
+        <h3>Cadastro de atividade</h3>
+        <label for="diciplina">Diciplina</label>
+        <select name="diciplina" id="diciplina">
+            <option value="">Selecione</option>
+        </select>
+        <label for="tipo">Tipo</label>
+        <input type="text" name="tipo" id="tipo"><br>
+        <label for="descricao">Descricao</label>
+        <input type="text" name="descricao" id="descricao"><br>
+        <label for="peso">Peso</label>
+        <input type="text" name="peso" id="peso"><br>
+        <label for="data_entrega">Data de entrega</label>
+        <input type="date" name="data_entrega" id="data_entrega"><br>
+        <button onclick="">Cadastrar</button>
+    </div>
+    <div id="lista de atividades"></div>
+</body>
+</html>

@@ -1,35 +1,39 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    cadastra_usuario();
+    $dadosRecebidos = file_get_contents('php://input');
+    $dadosDecodificados = json_decode($dadosRecebidos, true);
+    cadastra_usuario($dadosDecodificados);
 }elseif ($_SERVER['REQUEST_METHOD'] === 'GET'){
     lista_usuarios();
 }elseif($_SERVER['REQUEST_METHOD'] === 'PUT'){
-    altera_uauario($_SERVER['PATH_INFO']);
+    $dadosRecebidos = file_get_contents('php://input');
+    $dadosDecodificados = json_decode($dadosRecebidos, true);
+    altera_usuario($dadosDecodificados);
 }elseif($_SERVER['REQUEST_METHOD'] === 'DELETE'){
-    deleta_usuario($_SERVER['PATH_INFO']);
+    $dadosRecebidos = file_get_contents('php://input');
+    $dadosDecodificados = json_decode($dadosRecebidos, true);
+    deleta_usuario($dadosDecodificados);
 }
 
-function cadastra_usuario(){
-    $matricula = $_POST['matricula'];
-    $senha = $_POST['senha'];
-    $nome = $_POST['nome'];
-    $tipo = $_POST['tipo'];
-    $curso = $_POST['curso'];
-    $departamento = $_POST['departamento'];
+function cadastra_usuario($usuario){
+    $id = rand(0,999);
+    $nome = $usuario['nome'];
+    $matricula = $usuario['matricula'];
+    $senha = $usuario['senha'];
+    $tipo = $usuario['tipo'];
+    $curso = $usuario['curso'];
 
-    $con = mysqli_connect('localhost','admin','');
-    mysqli_select_db('atividades', $con);
 
-    if($tipo == ¨aluno¨){
-        $query = "INSERT INTO alunos (descricao, valor_unitario) VALUES (".$valor_unitario.", ".$d.");";
-    }elseif($tipo == ¨professor¨){
-        $query = "INSERT INTO professores (descricao, valor_unitario) VALUES (".$valor_unitario.", ".$d.");";
-    }
+    $con = mysqli_connect('localhost','root','');
+    mysqli_select_db($con,'Atividades');
 
-    $result = mysqli_query($query);
+    $query = "INSERT INTO usuario (id, nome, matricula, senha, tipo, curso) VALUES ($id, '$nome', '$matricula', '$senha', '$tipo', '$curso');";
+    
 
-    echo $result;
+    $result = mysqli_query($con, $query);
+
+    echo json_encode(array('erro'=>mysqli_error($con),'resultado'=>$result));
     mysqli_close($con);
 }
 
