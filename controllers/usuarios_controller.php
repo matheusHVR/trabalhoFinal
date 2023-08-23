@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $dadosRecebidos = file_get_contents('php://input');
@@ -38,28 +39,20 @@ function cadastra_usuario($usuario){
 }
 
 function lista_usuarios(){
-    $con = mysqli_connect('localhost','root','');
-    mysqli_select_db($con,'atividades');
+    $id = $_GET['id'];
+    $id = intval($id);
 
-    $query = "SELECT * from alunos, professores";
+    $con = mysqli_connect('localhost','root','');
+    mysqli_select_db($con,'Atividades');
+
+    $query = "SELECT * from usuario WHERE id = $id";
     $result = mysqli_query($con,$query);
 
-    if($result){
-        $rows = array();
-        $i = 0;
-        while($row = mysqli_fetch_assoc($result)){
-            $rows[$i] = $row;
-            $i += 1;
-        }
-        $json_dados = json_encode($rows);
+    $row = mysqli_fetch_assoc($result);
+    $json_dados = json_encode($row);
 
-        header('Content-Type: application/json');
+    echo $json_dados;
 
-        echo $json_dados;
-    }else{
-        echo "Ocorreu um erro na consulta: " . mysqli_error($con);
-    }
-   
     mysqli_close($con);
 }
 

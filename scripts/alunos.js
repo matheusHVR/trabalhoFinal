@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded",carregaDadosProfessor());
+document.addEventListener("DOMContentLoaded",carregaDadosAluno());
 
-async function carregaDadosProfessor(){
+async function carregaDadosAluno(){
 
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
